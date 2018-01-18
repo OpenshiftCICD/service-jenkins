@@ -19,7 +19,8 @@ COPY contrib/configure-slave /usr/local/bin/scl_enable
 WORKDIR /
 
 # Make directories
-RUN mkdir -p ${GRADLE_HOME} \
+RUN yum install -y java-1.8.0-openjdk-devel \
+    && mkdir -p ${GRADLE_HOME} \
     && yum install -y centos-release-scl-rh \
     && wget -L -O /gradle.zip https://services.gradle.org/distributions/gradle-${VERSION}-bin.zip \
     && unzip /gradle.zip \
